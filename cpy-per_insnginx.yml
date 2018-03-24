@@ -1,0 +1,13 @@
+---
+- hosts: webserver
+  tasks:
+    - name: copy the files
+      copy: src=/tower/tfun.txt dest=/home/tower/
+    - name: change onwership and permssion
+      file: dest=/home/tower/tfun.txt mode=755 owner=tower group=tower
+- hosts: webserver
+  tasks:
+    - name: installs nginx
+      yum: name=nginx state=latest
+    - name: starts nginx service
+      service: name=nginx state=started
