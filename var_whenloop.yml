@@ -1,0 +1,12 @@
+---
+ - name: this play to print the values which are in facts
+   hosts: webserver
+   vars:
+     package: wget
+   tasks:
+    - name: to install wget when os is centos
+      yum: name={{ package }} state=latest
+      when: ansible_distribution == "CentOS"
+    - name: to install wget when os is redhat
+      yum: name={{ package }} state=latest
+      when: ansible_distribution == "RedHat"
