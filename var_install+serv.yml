@@ -1,0 +1,14 @@
+---
+- hosts: webserver
+  tasks:
+    - name: Installs nginx
+      yum:
+       name=nginx
+       state=latest
+      register: yumoutput
+    - debug: var=yumoutput
+ 
+    - name: start nginx service
+      service: name=nginx state=started
+      register: serviceoutput
+    - debug: var=serviceoutput

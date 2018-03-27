@@ -1,0 +1,14 @@
+---
+- hosts: webserver
+  vars:
+  tasks:
+    - name: to print the valu of variable 
+      command: cat /etc/hosts
+      register: hostinfo
+    - debug: var=hostinfo
+    - name: install wget
+      package:
+       name=wget
+       state=latest
+      register: yumoutput
+    - debug: var=yumoutput
